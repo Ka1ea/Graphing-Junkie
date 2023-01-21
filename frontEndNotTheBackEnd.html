@@ -8,16 +8,29 @@
     </style> -->
     <body style="background-color: rgb(147, 188, 226);">
         <head>
-            <h1 style="text-align:center; margin-top: 32vh; font-family: 'Luminari';">
+            <style>
+                .center {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 70px;
+                  border: 1px transparent rgba(216, 239, 216, 0); 
+                }
+            </style>
+
+            <h1 style="text-align:center; margin-top: 32vh; font-family: 'Luminari'; color: rgb(79, 134, 236);">
                 Welcome to the Graphing Junkie!
             </h1>
-            <h2 style="text-align: center; margin-top: 35; font-family: 'Courier New';">
+            <h2 style="text-align: center; margin-top: 35; font-family: 'Luminari';color: azure;">
                 Ever wonder what could be the most unrelated trends throughout the years? <br>
                 Click the button!
             </h2>
-            <button onclick="generateGraph()">
-                Generate Graph!
-            </button>
+            <div class="center">
+                <button style="height: 40px; align-items: center; font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);" 
+                    onclick="generateGraph()">
+                    Generate Graph!
+                </button>
+            </div>
             <!-- generate graph -->
             <script>
                 function generateGraph() {
