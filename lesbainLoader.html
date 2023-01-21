@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.loader {
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 20px solid rgb(245, 74, 36);
+  border-right: 35px solid white;
+  border-bottom: 62px solid rgb(255, 111, 190);
+  border-left: 55px solid rgb(137, 13, 86);
+  width: 120px;
+  height: 120px;
+  animation: spin .5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body style="background-color:#cd6d6d">
+
+<h2 style="text-align:center; margin-top: 32vh;">Graph is junking now....</h2>
+
+<div class="loader"></div>
+</body>
+</html>
