@@ -6,51 +6,31 @@
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/65/65654.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 
-<body
-    style="background-color: rgb(147, 188, 226); height:100vh; display:flex; align-items:center; justify-content:center;">
-    <style>
-        .flexbox {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            height: 70px;
-            border: 1px transparent rgba(216, 239, 216, 0);
-
-        }
-
-        .col {
-            flex-direction: column;
-        }
-
-        .buttonstyle {
-            height: 40px;font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);
-        }
-    </style>
-
+<body>
     <div class="flexbox">
         <div class="col">
-            <button class="buttonstyle">
+            <button class="buttonstyle" id="r">
                 Team R
             </button>
-            
+
             {%if rclicks %}
-            <span>There have been: {{ rclicks }}!</span>
+            <span>{{ rclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
         </div>
 
-        
+
         <div class="col">
-            <button class="buttonstyle">
+            <button class="buttonstyle" id="g">
                 Team G
             </button>
 
             {%if gclicks %}
-            <span>There have been: {{ gclicks }}!</span>
+            <span>{{ gclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
@@ -58,16 +38,33 @@
         </div>
 
         <div class="col">
-            <button class="buttonstyle">
+            <button class="buttonstyle" id="b">
                 Team b
             </button>
-            
+
             {%if bclicks %}
-            <span>There have been: {{ bclicks }}!</span>
+            <span>{{ bclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
         </div>
-        </div>
-    
+    </div>
+    <script>
+        document.querySelectorAll(".buttonstyle").forEach(element => {
+            element.addEventListener('click', async _ => {
+                const id = element.id;
+                console.log("clicked " + id)
+                try {
+                    const response = await fetch('/update', {
+                        method: 'post',
+                        body: JSON.stringify(id)
+                    });
+                    console.log('Completed!', response);
+                } catch (err) {
+                    console.error(`Error: ${err}`);
+                }
+            });
+        });
+    </script>
+
 </html>
