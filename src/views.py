@@ -1,12 +1,12 @@
 from datetime import datetime
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, jsonify
 
 from src import app
 import json
 
 scores = {
-    "r" : 1,
+    "r" :1,
     "g" :1,
     "b" :1
 }
@@ -15,12 +15,7 @@ scores = {
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
-        print("tes2t")
-        result = json.loads(request.data.decode())["id"]
-        scores[result] = scores[result] + 1
-        return scores
-    
+
     rval, gval, bval = [x for x in scores.values()]
     print(rval)
     return render_template("barClicker.html", 
@@ -29,12 +24,11 @@ def home():
                            bclicks = bval)
 
 
-# @app.route("/update", methods=['POST']) 
-# def update(): 
-    
-#     # data = json.loads(request.data.decode())[0]
-#     # print("updated  " + data )
-#     # db_update_group(data)
+@app.route("/update", methods=['POST']) 
+def update(): 
+    result = json.loads(request.data.decode())["id"]
+    scores[result] = scores[result] + 1
+    return jsonify(scores)
         
 
 @app.route("/about/")

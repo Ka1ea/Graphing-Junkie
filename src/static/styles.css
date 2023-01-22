@@ -1,9 +1,7 @@
 body {
     background-color: rgb(216, 236, 247);
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
 .flexbox {
@@ -13,7 +11,15 @@ body {
     align-items: center;
     width: 100%;
     border: 1px transparent rgba(76, 151, 227, 0);
+}
 
+.bigbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-bottom: 0%;
+    transform: translate(0, 20vh)
 }
 
 .col {
@@ -26,6 +32,7 @@ body {
 }
 
 .buttonstyle {
+    padding: 10px;
     height: 40px;
     font-family: 'Luminari';
     font-size: large;
@@ -34,10 +41,11 @@ body {
 }
 
 .rect {
-    width:160px; 
+    width:160px;
+    margin: 10px; 
      
 }
 
-.spandex {
+.divdex {
     border: 1px transparent rgba(76, 151, 227, 0)
 }

@@ -10,64 +10,70 @@
 </head>
 
 <body>
-    <div class="flexbox">
-        <div class="col">
+    <div class="bigbox">
+        <div class="flexbox">
+            <div class="col">
+                <div class="rect" style="background-color:rgb(185, 0, 0); height:10px;"></div>
+                <button class="buttonstyle" id="r">
+                    Team R
+                </button>
+                {% if rclicks %}
+                <div class="divdex" id="rval">{{ rclicks }}</div>
+                {% else %}
+                <div>Error no click val</div>
+                {% endif %}
+            </div>
 
-            <div class="rect" style="background-color:rgb(185, 0, 0); height:10px;"></div>
-            <button class="buttonstyle" id="r">
-                Team R
-            </button>
-            {% if rclicks %}
-            <span class="spandex">{{ rclicks }}</span>
-            {% else %}
-            <span>Error no click val</span>
-            {% endif %}
-        </div>
 
 
-        
-        
-        <div class="col">
-            
-            <div class="rect" style="height:10px;background-color:rgb(125, 226, 127)"></div>
-            <button class="buttonstyle" id="g">
-                Team G
-            </button>
 
-            {% if gclicks %}
-            <span class="spandex">{{ gclicks }}</span>
-            {% else %}
-            <span>Error no click val</span>
-            {% endif %}
+            <div class="col">
+                <div class="rect" style="height:10px;background-color:rgb(125, 226, 127)"></div>
+                <button class="buttonstyle" id="g">
+                    Team G
+                </button>
 
-        </div>
+                {% if gclicks %}
+                <div class="divdex" id="gval">{{ gclicks }}</div>
+                {% else %}
+                <div>Error no click val</div>
+                {% endif %}
 
-        
+            </div>
 
-        <div class="col">
-            
-    
-            <div class="rect" style="height:10px;background-color:rgb(76, 151, 227)"></div>
-            <button class="buttonstyle" id="b">
-                Team B
-            </button>
 
-            {%if bclicks %}
-            <span class="spandex">{{ bclicks }}</span>
-            {% else %}
-            <span>Error no click val</span>
-            {% endif %}
+            <div class="col">
+                <div class="rect" style="height:10px;background-color:rgb(76, 151, 227)"></div>
+                <button class="buttonstyle" id="b">
+                    Team B
+                </button>
+
+                {%if bclicks %}
+                <div class="divdex" id="bval">{{ bclicks }}</div>
+                {% else %}
+                <div>Error no click val</div>
+                {% endif %}
+            </div>
         </div>
     </div>
     <script>
         document.querySelectorAll(".buttonstyle").forEach(element => {
-            element.addEventListener('click', async _ => {
+            element.addEventListener('click', () => {
                 const id = element.id;
                 console.log("clicked " + id)
                 try {
-                    const response = await fetch('/', {
+                    fetch('/update', {
                         method: 'post',
-                        body: JSON.stringify({"id":id})
+                        body: JSON.stringify({ "id": id })
+                    }).then(response => response.json()).then(data => {
+                        console.log(data)
+                        document.querySelectorAll(".divdex").forEach(div => {
+                            if (div.id == "rval") { div.innerHTML = data["r"] }
+                            else if (div.id == "gval") { div.innerHTML = data["g"] }
+                            else { div.innerHTML = data["b"] }
+                            reloadBars()
+                            console.log("updated")
+                        })
                     });
                     console.log('Completed!', response);
                 } catch (err) {
@@ -76,17 +82,23 @@
             });
         });
 
-        const rectIndex = 0;
-        document.querySelectorAll(".rectangle").forEach(element => {
-            rectIndex = element.id;
-            const spanIndex = 0; 
-            document.querySelectorAll(".spandex").forEach(spans => {
-                spanIndex = spans.id;
-                if (rectIndex == spanIndex) {
-                    element.setAttribute(height, spans.id);
-                }
-            })
-        });
+        function reloadBars() {
+            rectIndex = 0;
+            document.querySelectorAll(".rect").forEach(element => {
+                divIndex = 0;
+                document.querySelectorAll(".divdex").forEach(divs => {
+                    if (rectIndex == divIndex) {
+                        element.style.height = divs.innerHTML;
+                    }
+                    divIndex++;
+                })
+                rectIndex++;
+            });
+            console.log("reload bars")
+        }
+        reloadBars()
+
     </script>
+</body>
 
 </html>
