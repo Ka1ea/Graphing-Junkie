@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>competition?</title>
+    <title>{{gamename}}</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/65/65654.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,7 +71,7 @@
                 try {
                     fetch('/update', {
                         method: 'post',
-                        body: JSON.stringify({ "id": id })
+                        body: JSON.stringify({ "id": id, "gamename":document.title })
                     }).then(response => response.json()).then(data => {
                         console.log(data)
                         document.querySelectorAll(".divdex").forEach(div => {

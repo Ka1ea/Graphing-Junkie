@@ -6,6 +6,7 @@ from src import app
 import json
 
 numusers = 0
+winval = 10
 scores = {
     "testgame": {
         "scores": {
@@ -19,13 +20,16 @@ scores = {
 
 
 @app.route("/", methods=['GET', 'POST'])
-def home():
-    return render_template("basecamp.html")
+@app.route("/<error>")
+def home(error=None):
+    return render_template("basecamp.html",
+                           error=error)
     
+@app.route("/game")
 @app.route("/game/<gamename>", methods=["GET"]) 
 def game(gamename=None):
-    if(gamename == None or gamename == "" or not scores.has_key(gamename)) :
-        return render_template("error.html", error=gamename)
+    if(gamename == None or gamename == "" or (gamename not in scores)) :
+        return render_template("error.html",  error= "<" + gamename + ">" + " is not a game :(")
     
     rval, gval, bval = [0,0,0]
 
@@ -36,18 +40,27 @@ def game(gamename=None):
 
     print(rval)
 
-    if (rval > 100 or gval > 100 or bval > 100) :
-            return redirect(url_for("/end"))
+    if (rval >= winval or gval >= winval or bval >= winval) :
+        score_vals= scores[gamename]["scores"]
+        winner = "r"
+        if (score_vals["g"] == winval):
+            winner = "g" 
+        elif (score_vals["b"] == winval):
+            winner = "b"    
+        return redirect(url_for("end"), end=winner)
     
 
     return render_template("barClicker.html",
+                           gamename=gamename,
                            rclicks=rval,
                            gclicks=gval,
                            bclicks=bval)
 
 @app.route("/startgame", methods=['POST'])
 def startgame():
-    result = json.loads(request.data.decode())["gamename"]
+    result = request.form.get("gamename")
+    if (result in scores):
+        return redirect(url_for('home', error="game name taken or invalid game name"))
     scores[result] = {
         "scores": {
             "r": 1,
@@ -56,27 +69,30 @@ def startgame():
         },
         "timeout" : 3600
     }
-    return redirect(url_for('game/' + result))
+    return redirect(url_for('game', gamename=result))
 
 @app.route("/update", methods=['POST'])
 def update():
-    result = json.loads(request.data.decode())["id"]
-    scores[result] = scores[result] + 1
-    return jsonify(scores)
+    id = json.loads(request.data.decode())["id"]
+    gamename = json.loads(request.data.decode())["gamename"]
+    scores[gamename]["scores"][id] = scores[gamename]["scores"][id] + 1
+    if scores[gamename]["scores"][id] >= winval:
+        score_vals= scores[gamename]["scores"]
+        winner = "r"
+        if (score_vals["g"] == winval):
+            winner = "g" 
+        elif (score_vals["b"] == winval):
+            winner = "b"
+        return redirect(url_for("end", end=winner))
+    
+    # print(id, gamename)
+    # print(scores[gamename])
+    return jsonify(scores[gamename]["scores"])
 
-@app.route("/end")
-def get_end():
-    return render_template("end.html")
-
-
-@app.route("/about/")
-def about():
-    return render_template("about.html")
-
-
-@app.route("/contact/")
-def contact():
-    return render_template("contact.html")
+# @app.route("")
+@app.route("/end/<end>")
+def end(end=None):
+    return render_template("victory.html", end=end)
 
 
 @app.route("/hello/")
