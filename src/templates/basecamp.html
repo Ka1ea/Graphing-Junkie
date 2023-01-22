@@ -12,7 +12,6 @@
                   justify-content: center;
                   align-items: center;
                   height: 70px;
-                  border: 1px transparent rgba(216, 239, 216, 0); 
                 }
             </style>
 
@@ -26,11 +25,14 @@
             </h2>
             <div class="center">
             <form action="/startgame" method="POST">
-                <input type="text" id="gamename" name="gamename" value="gamename"><br>
-                    <button  type="submit" style="height: 40px; align-items: center; font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);">
-                        Go!
-                    </button>
+                <input type="text" id="gamename" name="gamename" value="gamename" style="text-align: center;"><br>
             </form>
+            </div>
+
+            <div class="center">
+                <button style="height: 30px; font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);" type="submit" >
+                    Go!
+                </button>
             </div>
         </head> 
     </body>
