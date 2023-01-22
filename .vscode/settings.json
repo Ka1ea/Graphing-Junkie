@@ -1,21 +1,5 @@
 {
-    "[jinja]": {
-        "editor.defaultFormatter": "monosans.djlint",
-        "editor.detectIndentation": false,
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true,
-    },
-    "[jinja-html]": {
-        "editor.defaultFormatter": "monosans.djlint",
-        "editor.detectIndentation": false,
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true,
-    },
-    "[django-html]": {
-        "editor.defaultFormatter": "monosans.djlint",
-        "editor.detectIndentation": false,
-        "editor.tabSize": 2,
-        "editor.formatOnPaste": true,
-    },
-        
+    // "files.associations": {
+    //     "*.html": "jinja-html"
+    //   }        
 }

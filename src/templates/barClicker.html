@@ -12,20 +12,28 @@
 <body>
     <div class="flexbox">
         <div class="col">
+
+          <svg width="400" height="110">
+            <rect width="160" height=rclicks style="fill:rgb(185, 0, 0); stroke-width:3;" x="30%"/>
+          </svg>
+
             <button class="buttonstyle" id="r">
                 Team R
             </button>
-            <ul>
-                {% if rclicks %}
-                <span>{{ rclicks }}</span>
-                {% else %}
-                <span>Error no click val</span>
-                {% endif %}
-            </ul>
+            {% if rclicks %}
+            <span>{{ rclicks }}</span>
+            {% else %}
+            <span>Error no click val</span>
+            {% endif %}
         </div>
 
 
+        
+        
         <div class="col">
+            <svg width="400" height="110">
+                <rect width="160" height=gclicks style="fill:rgb(125, 226, 127); stroke-width:3;" x="30%"/>
+            </svg>
             <button class="buttonstyle" id="g">
                 Team G
             </button>
@@ -38,7 +46,12 @@
 
         </div>
 
+        
+
         <div class="col">
+            <svg width="400" height="110">
+                <rect width="160" height=bclicks style="fill:rgb(76, 151, 227); stroke-width:3;" x="30%"/>
+            </svg>
             <button class="buttonstyle" id="b">
                 Team b
             </button>

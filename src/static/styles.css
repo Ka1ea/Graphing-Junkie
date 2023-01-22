@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: rgb(216, 236, 247);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 1px transparent rgba(216, 239, 216, 0);
+    border: 1px transparent rgba(76, 151, 227, 0);
 
 }
 
