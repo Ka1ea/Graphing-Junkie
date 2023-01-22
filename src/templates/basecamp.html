@@ -19,23 +19,19 @@
             <h1 style="text-align:center; margin-top: 32vh; font-family: 'Luminari'; color: rgb(79, 134, 236);">
                 Welcome to the Clickers!
             </h1>
+            
             <h2 style="text-align: center; margin-top: 35; font-family: 'Luminari';color: azure;">
                 Love competition? <br>
                 Click the button to see more!
             </h2>
             <div class="center">
-                <button style="height: 40px; align-items: center; font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);" 
-                    onclick="generateGraph()">
-                    Go!
-                </button>
+            <form action="/startgame" method="POST">
+                <input type="text" id="gamename" name="gamename" value="gamename"><br>
+                    <button  type="submit" style="height: 40px; align-items: center; font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);">
+                        Go!
+                    </button>
+            </form>
             </div>
-            <!-- generate graph -->
-            <script>
-                function generateGraph() {
-                    // insert location here ;-;
-                    location.replace("./lesbainLoader.html");
-                }
-            </script>
         </head> 
     </body>
 </html>
