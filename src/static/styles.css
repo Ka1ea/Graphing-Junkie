@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    border: 1px transparent rgba(216, 239, 216, 0);
+
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.buttonstyle {
+    height: 40px;
+    font-family: 'Luminari';
+    font-size: large;
+    border-color: rgb(79, 134, 236);
+}

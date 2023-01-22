@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, url_for, redirect
 
 from src import app, cursor, connection
+import json
 
 
 def db_get_all():
@@ -33,6 +34,15 @@ def home():
                            rclicks = rval,
                            gclicks = gval, 
                            bclicks = bval)
+
+
+@app.route("/update", methods=['POST']) 
+def update(): 
+    print(json.loads(request.data.decode()))
+    # data = json.loads(request.data.decode())[0]
+    # print("updated  " + data )
+    # db_update_group(data)
+        
 
 @app.route("/about/")
 def about():
