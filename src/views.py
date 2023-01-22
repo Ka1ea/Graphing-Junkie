@@ -6,7 +6,7 @@ from src import app
 import json
 
 numusers = 0
-winval = 10
+winval = 100
 scores = {
     "testgame": {
         "scores": {
@@ -40,7 +40,7 @@ def game(gamename=None):
 
     print(rval)
 
-    if (rval >= winval or gval >= winval or bval >= winval) :
+    if (rval > winval or gval > winval or bval > winval) :
         score_vals= scores[gamename]["scores"]
         winner = "r"
         if (score_vals["g"] == winval):
@@ -76,14 +76,8 @@ def update():
     id = json.loads(request.data.decode())["id"]
     gamename = json.loads(request.data.decode())["gamename"]
     scores[gamename]["scores"][id] = scores[gamename]["scores"][id] + 1
-    if scores[gamename]["scores"][id] >= winval:
-        score_vals= scores[gamename]["scores"]
-        winner = "r"
-        if (score_vals["g"] == winval):
-            winner = "g" 
-        elif (score_vals["b"] == winval):
-            winner = "b"
-        return redirect(url_for("end", end=winner))
+    if scores[gamename]["scores"][id] > winval:
+        return jsonify(id)
     
     # print(id, gamename)
     # print(scores[gamename])

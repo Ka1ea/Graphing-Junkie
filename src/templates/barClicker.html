@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="title">Fight</div>
+    <div class="title" id="title">Fight</div>
     <div class="bigbox">
         <div class="flexbox">
             <div class="col">
@@ -74,13 +74,20 @@
                         body: JSON.stringify({ "id": id, "gamename":document.title })
                     }).then(response => response.json()).then(data => {
                         console.log(data)
-                        document.querySelectorAll(".divdex").forEach(div => {
-                            if (div.id == "rval") { div.innerHTML = data["r"] }
-                            else if (div.id == "gval") { div.innerHTML = data["g"] }
-                            else { div.innerHTML = data["b"] }
-                            reloadBars()
-                            console.log("updated")
-                        })
+                        if (data == "r" || data == "g" || data == "b") {
+                            document.querySelectorAll(".buttonstyle").forEach(element => {
+                                element.disabled  = true;
+                            })
+                            document.getElementById("title").innerHTML = data + " Wins!"
+                        } else {
+                            document.querySelectorAll(".divdex").forEach(div => {
+                                if (div.id == "rval") { div.innerHTML = data["r"] }
+                                else if (div.id == "gval") { div.innerHTML = data["g"] }
+                                else { div.innerHTML = data["b"] }
+                                reloadBars()
+                                console.log("updated")
+                            })
+                        }
                     });
                     console.log('Completed!', response);
                 } catch (err) {
