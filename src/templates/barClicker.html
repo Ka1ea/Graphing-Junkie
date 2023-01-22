@@ -69,13 +69,13 @@
                 const id = element.id;
                 console.log("clicked " + id)
                 try {
-                    const response = await fetch('/update', {
+                    const response = await fetch('/', {
                         method: 'post',
-                        body: JSON.stringify(id)
+                        body: JSON.stringify({"id":id})
                     });
                     console.log('Completed!', response);
                 } catch (err) {
-                    console.error(`Error: ${err}`);
+                    console.error(`Error:`);
                 }
             });
         });
