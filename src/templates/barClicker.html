@@ -13,15 +13,16 @@
     <div class="flexbox">
         <div class="col">
 
-          <svg width="400" height="110">
-            <rect width="160" height=rclicks style="fill:rgb(185, 0, 0); stroke-width:3;" x="30%"/>
-          </svg>
-
+            <div class="rect">
+                <svg width="400" height="100%">
+                    <rect width="160" height=rclicks style="fill:rgb(185, 0, 0); stroke-width:3;" x="30%"/>
+                </svg>
+            </div>
             <button class="buttonstyle" id="r">
                 Team R
             </button>
             {% if rclicks %}
-            <span>{{ rclicks }}</span>
+            <span class="spandex">{{ rclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
@@ -31,15 +32,17 @@
         
         
         <div class="col">
-            <svg width="400" height="110">
-                <rect width="160" height=gclicks style="fill:rgb(125, 226, 127); stroke-width:3;" x="30%"/>
-            </svg>
+            <div class="rect">
+                <svg width="400" height="100%">
+                    <rect width="160" height=gclicks style="fill:rgb(125, 226, 127); stroke-width:3;" x="30%"/>
+                </svg>
+            </div>
             <button class="buttonstyle" id="g">
                 Team G
             </button>
 
             {% if gclicks %}
-            <span>{{ gclicks }}</span>
+            <span class="spandex">{{ gclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
@@ -49,15 +52,17 @@
         
 
         <div class="col">
-            <svg width="400" height="110">
-                <rect width="160" height=bclicks style="fill:rgb(76, 151, 227); stroke-width:3;" x="30%"/>
-            </svg>
+            <div class="rect">
+                <svg width="400" height="100%">
+                    <rect width="160" height=bclicks style="fill:rgb(76, 151, 227); stroke-width:3;" x="30%"/>
+                </svg>
+            </div>
             <button class="buttonstyle" id="b">
-                Team b
+                Team B
             </button>
 
             {%if bclicks %}
-            <span>{{ bclicks }}</span>
+            <span class="spandex">{{ bclicks }}</span>
             {% else %}
             <span>Error no click val</span>
             {% endif %}
@@ -78,6 +83,16 @@
                     console.error(`Error: ${err}`);
                 }
             });
+        });
+
+        const rectIndex = 0;
+        document.querySelectorAll(".rect").forEach(element => {
+            const spanIndex = 0; 
+            document.querySelectorAll(".spandex").forEach(spans => {
+                if (rectIndex == spanIndex) {
+                    element.setAttribute(height, spans.id);
+                }
+            })
         });
     </script>
 

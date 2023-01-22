@@ -32,3 +32,11 @@ body {
     border-color: rgb(79, 134, 236);
     background-color: rgb(79, 134, 236);
 }
+
+.rect {
+    border: 1px transparent rgba(76, 151, 227, 0)
+}
+
+.spandex {
+    border: 1px transparent rgba(76, 151, 227, 0)
+}
