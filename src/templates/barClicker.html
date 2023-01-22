@@ -87,8 +87,10 @@
 
         const rectIndex = 0;
         document.querySelectorAll(".rect").forEach(element => {
+            rectIndex = element.id;
             const spanIndex = 0; 
             document.querySelectorAll(".spandex").forEach(spans => {
+                spanIndex = spans.id;
                 if (rectIndex == spanIndex) {
                     element.setAttribute(height, spans.id);
                 }
