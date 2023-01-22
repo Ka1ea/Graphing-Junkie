@@ -3,11 +3,14 @@
 
 <head>
     <title>competition?</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/65/65654.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body style="background-color: rgb(147, 188, 226); height:100vh; display:flex; align-items:center; justify-content:center;">
+<body
+    style="background-color: rgb(147, 188, 226); height:100vh; display:flex; align-items:center; justify-content:center;">
     <style>
-
         .flexbox {
             display: flex;
             flex-direction: row;
@@ -15,47 +18,56 @@
             align-items: center;
             height: 70px;
             border: 1px transparent rgba(216, 239, 216, 0);
-            
+
         }
 
-        .left {
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            align-items: left;
-
-            height: 70px;
-            border: 1px transparent rgba(216, 239, 216, 0);
+        .col {
+            flex-direction: column;
         }
 
-        .right {
-            display: flex;
-            flex-direction: row;
-            justify-content: right;
-            align-items: right;
-            height: 70px;
-            border: 1px transparent rgba(216, 239, 216, 0);
+        .buttonstyle {
+            height: 40px;font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);
         }
     </style>
-    <!-- <div class="center"> -->
-        <div class="flexbox">
-            <button style="height: 40px;font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);"> <!--
-                onclick=""> -->
-                Team Middle
-            </button>
-            <div class="center">
-                <button style="height: 40px;font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);">
-                    <!-- onclick=""> -->
-                    Team Right
-                </button>
-            </div>
-            <div class="center">
-                <button style="height: 40px;font-family: 'Luminari'; font-size: large; border-color: rgb(79, 134, 236);">
-                    <!-- onclick=""> -->
-                    Team Left
-                </button>
-            </div>
-        </div>
-    <!-- </div> -->
 
+    <div class="flexbox">
+        <div class="col">
+            <button class="buttonstyle">
+                Team R
+            </button>
+            
+            {%if rclicks %}
+            <span>There have been: {{ rclicks }}!</span>
+            {% else %}
+            <span>Error no click val</span>
+            {% endif %}
+        </div>
+
+        
+        <div class="col">
+            <button class="buttonstyle">
+                Team G
+            </button>
+
+            {%if gclicks %}
+            <span>There have been: {{ gclicks }}!</span>
+            {% else %}
+            <span>Error no click val</span>
+            {% endif %}
+
+        </div>
+
+        <div class="col">
+            <button class="buttonstyle">
+                Team b
+            </button>
+            
+            {%if bclicks %}
+            <span>There have been: {{ bclicks }}!</span>
+            {% else %}
+            <span>Error no click val</span>
+            {% endif %}
+        </div>
+        </div>
+    
 </html>

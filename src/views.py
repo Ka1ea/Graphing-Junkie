@@ -12,25 +12,27 @@ def db_get_all():
 
 
 def db_get_by_id(id):
-    cursor.execute('SELECT * FROM colorwars WHERE id = %s', (id, ))
+    cursor.execute('SELECT * FROM colorwars WHERE colorgroup = %s', (id, ))
     result = cursor.fetchone()
     return result
 
 
 
 def db_update_group(team):
-    cursor.execute("UPDATE colorwars SET score = ISNULL(ID, 0) + 1 WHERE id = %s")
+    cursor.execute("UPDATE colorwars SET score = ISNULL(ID, 0) + 1 WHERE colorgroup = %s")
     connection.commit()
 
 
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    rval, gval, bval = db_get_all()
+    results = db_get_all()
+    print(results)
+    rval, gval, bval = [x[-1] for x in results]
     return render_template("barClicker.html", 
-                           rval = rval,
-                           gval = gval, 
-                           bval = bval)
+                           rclicks = rval,
+                           gclicks = gval, 
+                           bclicks = bval)
 
 @app.route("/about/")
 def about():

@@ -1,7 +1,10 @@
-import flask
+import flask, psycopg2
+from os import environ
 app = flask.Flask(__name__)
 
-pg_conn_string="postgresql://gink_purdue_edu:4BxxDePQYkEYHLCYgVkNfA@misty-wombat-6961.5xj.cockroachlabs.cloud:26257/misty-wombat-6961.defaultdb?sslmode=verify-full"
+
+pg_conn_string = environ["DATABASE_URL"]
+
 
 connection = psycopg2.connect(pg_conn_string)
 
@@ -9,19 +12,19 @@ connection = psycopg2.connect(pg_conn_string)
 # Set to automatically commit each statement
 connection.set_session(autocommit=True)
 
-cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+cursor = connection.cursor()
 
-def create_tables():
-    cursor.execute(
-    """
-    CREATE TABLE colorwars (
-      id SERIAL PRIMARY KEY, 
-      group STRING, 
-      score INT, 
-    )"
-    """
-    )
-    connection.commit()
 
-    print("created table")
-    
+# initialize db
+cursor.execute("DROP TABLE IF EXISTS colorwars")
+cursor.execute("CREATE TABLE IF NOT EXISTS colorwars ( id SERIAL PRIMARY KEY, color STRING, score INT);")
+cursor.execute("SHOW COLUMNS FROM colorwars")
+row = cursor.fetchone()
+connection.commit()
+if row: print(row[0])
+cursor.execute("INSERT INTO colorwars(color, score) VALUES ('R', 1);")
+cursor.execute("INSERT INTO colorwars(color, score) VALUES ('G', 1);")
+cursor.execute("INSERT INTO colorwars(color, score) VALUES ('B', 1);")
+connection.commit()
+
+print("created table")
