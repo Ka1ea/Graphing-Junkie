@@ -14,13 +14,20 @@ body {
     flex-grow:1;
 }
 
+.title {
+    
+    margin-top:35px;
+    font-size: xx-large;
+    font-family: "gamerfont";
+    text-align: center;
+}
+
 .bigbox {
     display:flex;
     height: auto;
     bottom:0;
-     margin-bottom:auto;
+    margin-bottom:auto;
     margin-top:auto;
-    height:96vh;
 }
 .spacer{
     height:100px;
@@ -29,7 +36,7 @@ body {
 }
 
 .col {
-    height:96vh;
+    height:92vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,9 +50,10 @@ body {
 }
 
 .buttonstyle {
+
     padding: 10px;
     height: 40px;
-    font-family: 'Luminari';
+    font-family: 'gamerfont';
     font-size: large;
     border-color: rgb(79, 134, 236);
     background-color: rgb(79, 134, 236);
@@ -60,4 +68,12 @@ body {
 .divdex {
     border: 1px transparent rgba(76, 151, 227, 0);
     margin-bottom: 50px;
+    margin-top: 10px;
+    font-family: "gamerfont";
+    font-size: small;
+}
+
+@font-face {
+    font-family: "gamerfont";
+    src: url("./PressStart2P-Regular.ttf");
 }
