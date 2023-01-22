@@ -11,17 +11,17 @@
 
 <body>
     <div class="flexbox">
-        
         <div class="col">
             <button class="buttonstyle" id="r">
                 Team R
             </button>
-
-            {%if rclicks %}
-            <span>{{ rclicks }}</span>
-            {% else %}
-            <span>Error no click val</span>
-            {% endif %}
+            <ul>
+                {% if rclicks %}
+                <span>{{ rclicks }}</span>
+                {% else %}
+                <span>Error no click val</span>
+                {% endif %}
+            </ul>
         </div>
 
 
@@ -30,7 +30,7 @@
                 Team G
             </button>
 
-            {%if gclicks %}
+            {% if gclicks %}
             <span>{{ gclicks }}</span>
             {% else %}
             <span>Error no click val</span>
