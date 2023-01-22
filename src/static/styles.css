@@ -11,24 +11,35 @@ body {
     align-items: center;
     width: 100%;
     border: 1px transparent rgba(76, 151, 227, 0);
+    flex-grow:1;
 }
 
 .bigbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin-bottom: 0%;
-    transform: translate(0, 20vh)
+    display:flex;
+    height: auto;
+    bottom:0;
+     margin-bottom:auto;
+    margin-top:auto;
+    height:96vh;
+}
+.spacer{
+    height:100px;
+    
+    flex-grow:1;
 }
 
 .col {
+    height:96vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 30%;
     text-align: center;
+    margin-bottom:0;
+}
+
+.buttoncontainer {
 }
 
 .buttonstyle {
@@ -47,5 +58,6 @@ body {
 }
 
 .divdex {
-    border: 1px transparent rgba(76, 151, 227, 0)
+    border: 1px transparent rgba(76, 151, 227, 0);
+    margin-bottom: 50px;
 }

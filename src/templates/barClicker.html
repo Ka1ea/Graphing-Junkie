@@ -10,13 +10,17 @@
 </head>
 
 <body>
+    <!-- <div class="title"></div> -->
     <div class="bigbox">
         <div class="flexbox">
             <div class="col">
-                <div class="rect" style="background-color:rgb(185, 0, 0); height:10px;"></div>
-                <button class="buttonstyle" id="r">
-                    Team R
-                </button>
+                <div class="spacer"> </div>
+                <div class="rect" style="background-color: rgb(185, 0, 0); height: 49px;"></div>
+                <div class="buttoncontainer">
+                    <button class="buttonstyle" id="r">
+                        Team R
+                    </button>
+                </div>
                 {% if rclicks %}
                 <div class="divdex" id="rval">{{ rclicks }}</div>
                 {% else %}
@@ -28,26 +32,29 @@
 
 
             <div class="col">
+                <div class="spacer"> </div>
                 <div class="rect" style="height:10px;background-color:rgb(125, 226, 127)"></div>
-                <button class="buttonstyle" id="g">
-                    Team G
-                </button>
-
+                <div class="buttoncontainer">
+                    <button class="buttonstyle" id="g">
+                        Team G
+                    </button>
+                </div>
                 {% if gclicks %}
                 <div class="divdex" id="gval">{{ gclicks }}</div>
                 {% else %}
                 <div>Error no click val</div>
                 {% endif %}
-
             </div>
 
 
             <div class="col">
+                <div class="spacer"> </div>
                 <div class="rect" style="height:10px;background-color:rgb(76, 151, 227)"></div>
-                <button class="buttonstyle" id="b">
-                    Team B
-                </button>
-
+                <div class="buttoncontainer"> 
+                    <button class="buttonstyle" id="b">
+                        Team B
+                    </button>
+                </div>
                 {%if bclicks %}
                 <div class="divdex" id="bval">{{ bclicks }}</div>
                 {% else %}
@@ -88,7 +95,7 @@
                 divIndex = 0;
                 document.querySelectorAll(".divdex").forEach(divs => {
                     if (rectIndex == divIndex) {
-                        element.style.height = divs.innerHTML;
+                        element.style.height = divs.innerHTML * 5 + "px";
                     }
                     divIndex++;
                 })
