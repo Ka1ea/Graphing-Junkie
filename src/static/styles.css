@@ -11,7 +11,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 70px;
+    width: 100%;
     border: 1px transparent rgba(216, 239, 216, 0);
 
 }
@@ -19,6 +19,9 @@ body {
 .col {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
     text-align: center;
 }
 
@@ -27,4 +30,5 @@ body {
     font-family: 'Luminari';
     font-size: large;
     border-color: rgb(79, 134, 236);
+    background-color: rgb(79, 134, 236);
 }
